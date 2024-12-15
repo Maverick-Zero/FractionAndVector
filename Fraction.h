@@ -2,13 +2,14 @@
 #define FRACTION_H
 #include <iostream>
 #include <stdexcept>
+#include <cmath>
 
 class Fraction {
 private:
     int numerator;
     int denominator;
 
-    int gcd(int a, int b); // Custom GCD function
+    int gcd(int a, int b);
     void simplify();
 
 public:
@@ -31,9 +32,11 @@ public:
     Fraction& operator*=(const Fraction& other);
     Fraction& operator/=(const Fraction& other);
 
+    double toDouble() const;
+
+    // Friend functions (declarations only)
     friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
     friend std::istream& operator>>(std::istream& is, Fraction& frac);
-
-    double toDouble() const;
 };
+
 #endif
